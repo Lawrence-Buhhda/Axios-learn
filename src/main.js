@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import App from './App.vue'
-import axios from "axios";
+import {request} from "@/network/request";
+
 
 Vue.config.productionTip = false
 
@@ -49,25 +50,44 @@ new Vue({
 //     }))
 
 //4.创建对应的axios实例(一个服务器可能不在一个ip地址当中)
-const instance1 = axios.create({
-  baseURL:'http://123.207.32.32:8000',
-  timeout:5000
-})
-
-instance1({
-  url:'/home/multidata'
-}).then(res => {
-  console.log(res)
-})
-
-instance1({
-  url:'/home/data'
-}).then(res => {
-  console.log(res)
-})
+// const instance1 = axios.create({
+//   baseURL:'http://123.207.32.32:8000',
+//   timeout:5000
+// })
+//
+// instance1({
+//   url:'/home/multidata'
+// }).then(res => {
+//   console.log(res)
+// })
+//
+// instance1({
+//   url:'/home/data'
+// }).then(res => {
+//   console.log(res)
+// })
 
 // const instance2 = axios.create({
 //   baseURL:'http://222.207.32.32:8000',
 //   timeout:10000,
 //   //headers:{}
 // })
+
+//5.封装request模块
+// import {request} from "@/network/request";
+//
+// request({
+//   url:'/home/multidata'
+// },res => {
+//   console.log(res)
+// },err => {
+//   console.log(err)
+// })
+
+request({
+  url:'/home/multidata'
+}).then(res => {
+  console.log(res)
+}).catch(err => {
+  console.log(err)
+})
